@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+}
+
+main {
+    margin: 8px;
+}
+
+.horizontal-nav {
+    display: flex;
+    margin: 0;
+    padding: 8px;
+    background-color: antiquewhite;
+}
+
+.nav-title {
+    margin: 0;
+    font-size: x-large;
+    align-self: center;
+}
+
+.right-aligned {
+    display: flex;
+    margin-left: auto;
+}
+
+.shell-for-nav-item {
+    margin: 10px;
+    padding: 10px;
+    background-color: burlywood;
+}
+
+.btn-link {
+    background-color: burlywood;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    background-color: coral;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: black;
+}
+
+.about {
+    justify-content: center;
+    font-size: large;
+    display: grid;
+    grid-template-columns: 500px auto;
+    grid-template-rows: 1fr;
+    border: 1px solid;
+    border-radius: 3%;
+}
+
+.projects {
+    justify-content: center;
+}
+
+.links {
+    justify-content: center;
+}
