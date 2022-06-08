@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>HW 1</title>
+    <title>HW 2</title>
 </head>
 
 <body>
@@ -14,46 +14,83 @@
     <nav class="horizontal-nav">
         <span class="nav-title">Ruslan Khairov</span>
         <div class="right-aligned">
-            <a class="btn-link" href="">About me</a>
-            <a class="btn-link" href="">My projects</a>
-            <a class="btn-link" href="">Contact me</a>
+            <a class="btn-link" href="#about">About me</a>
+            <a class="btn-link" href="#funny-fact">Funny fact</a>
+            <a class="btn-link" href="#links">Social media</a>
         </div>
     </nav>
 </header>
 <main>
-    <div class="about">
-        <div>
-            <p>
-                I'm first year student in Innopolis University!
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam aut deserunt doloribus
-                explicabo fuga fugit harum nostrum numquam placeat quaerat, ratione, rem sit suscipit veritatis.
-                Aliquid eaque recusandae repellendus? Architecto beatae consectetur corporis dolore, eaque earum illo
-                laudantium tempora tempore voluptatem. Adipisci dignissimos dolorem porro quaerat quis veniam veritatis!
-            </p>
+    <div id="about" class="card-section">
+        <p>
+            My name is Ruslan Khairov. I'm 19 years old. My house is in the northeast section of Innopolis, where all
+            the villas are, and I am not married.
+            I study as an student at Innopolis University, and I get home every day by 8 PM at the latest. I don't
+            smoke, but I occasionally drink.
+            I'm in bed by 11 PM, and make sure I get eight hours of sleep, no matter what. After having a glass of warm
+            milk and doing about twenty minutes of stretches before going to bed, I usually have no problems sleeping
+            until morning.
+            Just like a baby, I wake up without any fatigue or stress in the morning. I was told there were no issues at
+            my last check-up. I'm trying to explain that I'm a person who wishes to live a very quiet life. I take care
+            not to trouble myself with any enemies, like winning and losing, that would cause me to lose sleep at night.
+            That is how I deal with society, and I know that is what brings me happiness. Although, if I were to fight I
+            wouldn't lose to anyone.
+        </p>
+        <img id="man-in-beer" alt="img" src="images/man-in-beer.jpg"/>
+    </div>
+
+    <div id="funny-fact" class="card-section">
+        <p>
+            Funny fact about me - I can predict the weather in Innopolis. Don't you believe it? I'll prove it below.
+        </p>
+
+        <div id="weather-section">
+            <div class="weather-sub-div">
+                <h4> Weather Today:</h4>
+                <p class="weather-paragraph" id="weather-today">
+                    Predicting...
+                </p>
+            </div>
+            <div class="weather-sub-div">
+                <h4> Weather Tomorrow:</h4>
+                <p class="weather-paragraph" id="weather-tomorrow">
+                    Predicting...
+                </p>
+            </div>
         </div>
-        <img alt="img" style="width: 100px; height: 200px" src="static/63cb085d21168352b3237d99bdc1807a.jpg"/>
     </div>
 
-    <div class="projects">
-
-    </div>
-
-    <div class="links">
+    <div id="links">
         <h1 style="grid-row-start: 1; grid-column-start: 2" class="links-header">Links</h1>
 
         <a style="grid-row-start: 2; grid-column-start: 1" href=https://github.com/habur331>
-            <img alt="github.com" class="icon" src="static/git.png">
+            <img alt="github.com" class="icon" src="images/git-refactor.png">
         </a>
 
         <a style="grid-row-start: 2; grid-column-start: 3" href=https://vk.com/haburg>
-            <img alt="vk.com" class="icon" src="static/free-icon-vk-725349.png">
+            <img alt="vk.com" class="icon" src="images/vk-icon.png">
         </a>
     </div>
 </main>
 <script>
+    async function fetchWeather() {
+        const res = await fetch('https://weatherdbi.herokuapp.com/data/weather/innopolis');
+        const json = await res.json();
 
+        return {
+            today: json.currentConditions,
+            tomorrow: json.next_days[0],
+        }
+    }
+
+    const today_div = document.getElementById('weather-today');
+    const tomorrow_div = document.getElementById('weather-tomorrow');
+
+    fetchWeather().then(weather => {
+        console.log(weather.tomorrow);
+        today_div.textContent = 'Now it is ' + weather.today.temp.c + ' degrees Celsius and ' + weather.today.comment;
+        tomorrow_div.textContent = 'Tomorrow will be ' + weather.tomorrow.max_temp.c + ' degrees Celsius and ' + weather.tomorrow.comment;
+    });
 </script>
 </body>
 

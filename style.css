@@ -46,25 +46,52 @@ main {
     color: black;
 }
 
-.about {
-    width: min-content;
+.card-section {
+    width: 80%;
     padding: 0 20px 0 20px;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
+    margin: 20px auto;
     font-size: large;
-    display: grid;
-    grid-template-columns: 500px auto;
-    grid-template-rows: 1fr;
     border: 1px solid;
-    border-radius: 3%;
-}
-
-.projects {
+    border-radius: 10px;
+    display: flex;
     justify-content: center;
 }
 
-.links {
+.card-section p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather-section {
+    display: flex;
+}
+
+.weather-sub-div h4 {
+    display: flex;
+    justify-content: center;
+}
+
+.weather-sub-div {
+    margin: auto;
+}
+
+.weather-paragraph {
+    display: flex;
+    justify-content: center;
+}
+
+#man-in-beer {
+    width: 200px;
+    height: 300px;
+}
+
+#funny-fact {
+    display: flex;
+    flex-direction: column;
+}
+
+#links {
     margin: 20px;
     display: grid;
     align-items: center;
@@ -73,16 +100,14 @@ main {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.icon
-{
+.icon {
     width: 100px;
     height: 100px;
     margin: auto;
     display: block;
 }
 
-.icon:hover
-{
+.icon:hover {
     width: 105px;
     height: 105px;
 }
